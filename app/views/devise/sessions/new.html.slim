@@ -3,7 +3,7 @@ div.limiter
     div.wrap-login100.p-l-110.p-r-110.p-t-62.p-b-33
       form.login100-form.validate-form.flex-sb.flex-w
         span.login100-form-title.p-b-53 Sign In With
-        a.btn-face.m-b-20 href="#"
+        = link_to user_facebook_omniauth_authorize_path, class: "btn-face m-b-20" do
           i.fa.fa-facebook-official
           | Facebook
         = link_to user_google_oauth2_omniauth_authorize_path, class: "btn-google m-b-20" do

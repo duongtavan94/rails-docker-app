@@ -1,6 +1,16 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    user = User.from_google(from_google_params)
+    generic_callback
+  end
+
+  def facebook
+    generic_callback
+  end
+
+  protected
+
+  def generic_callback
+    user = User.from_omniauth(from_omniauth_params)
     if user.present?
       sign_out_all_scopes
       flash[:success] = t 'devise.omniauth_callbacks.success', kind: 'Google'
@@ -12,8 +22,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  protected
-
   def after_omniauth_failure_path_for(_scope)
     root_path
   end
@@ -24,12 +32,13 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-  def from_google_params
+  def from_omniauth_params
     @from_google_params ||= {
       uid: auth.uid,
       email: auth.info.email,
       full_name: auth.info.name,
-      avatar_url: auth.info.image
+      avatar_url: auth.info.image,
+      provider: auth.provider
     }
   end
 
