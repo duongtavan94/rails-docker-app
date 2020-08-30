@@ -1,0 +1,30 @@
+AllCops:
+  DisplayCopNames: true
+  Include:
+    - 'app/channels/*'
+    - 'app/helpers/*'
+    - 'app/jobs/*'
+    - 'app/services/*'
+    - 'app/uploaders/*'
+    - 'app/validators/*'
+    - 'app/worker/*'
+    - 'db/**/*'
+    - 'libs/**/*'
+    - 'spec/**/*'
+  Exclude:
+    - 'db/fixtures/**/*'
+    - 'db/schema.rb'
+    - 'db/migrate/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'bin/*'
+    - 'config.ru'
+    - 'Rakefile'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+    
